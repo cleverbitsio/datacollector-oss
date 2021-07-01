@@ -32,7 +32,7 @@ public class GcsOriginPostProcessingConfig {
       group = "#0"
   )
   @ValueChooserModel(PostProcessingOptionsChooserValues.class)
-  public PostProcessingOptions postProcessing;
+  public PostProcessingOptions postProcessing = PostProcessingOptions.NONE;
 
   @ConfigDef(
       required = true,
@@ -45,7 +45,7 @@ public class GcsOriginPostProcessingConfig {
       triggeredByValue = { "ARCHIVE" }
   )
   @ValueChooserModel(GcsArchivingOptionChooserValues.class)
-  public GcsArchivingOption archivingOption;
+  public GcsArchivingOption archivingOption = GcsArchivingOption.MOVE_TO_PREFIX;
 
   @ConfigDef(
       required = false,

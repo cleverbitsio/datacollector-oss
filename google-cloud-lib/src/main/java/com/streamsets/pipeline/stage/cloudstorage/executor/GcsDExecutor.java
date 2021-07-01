@@ -20,7 +20,7 @@ import com.streamsets.pipeline.api.base.configurablestage.DExecutor;
 import com.streamsets.pipeline.stage.cloudstorage.executor.config.GcsExecutorConfig;
 
 @StageDef(
-    version = 1,
+    version = 2,
     label = "Google Cloud Storage Executor",
     description = "Executes metadata operation on Google Cloud Storage.",
     icon = "cloud-storage-logo.png",
