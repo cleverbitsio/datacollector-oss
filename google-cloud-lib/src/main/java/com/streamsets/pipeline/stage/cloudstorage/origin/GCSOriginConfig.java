@@ -91,7 +91,10 @@ public class GCSOriginConfig {
     public DataParserFormatConfig dataParserFormatConfig;
 
     @ConfigDefBean(groups = {"ERROR_HANDLING"})
-    public GcsOriginErrorConfig gcsOriginErrorConfig;
+    public GcsOriginPostProcessingConfig gcsOriginErrorConfig;
+
+    @ConfigDefBean(groups = {"POST_PROCESSING"})
+    public GcsOriginPostProcessingConfig postProcessingConfig;
 
     @ConfigDefBean(groups = "CREDENTIALS")
     public CloudStorageCredentialsConfig credentials = new CloudStorageCredentialsConfig();

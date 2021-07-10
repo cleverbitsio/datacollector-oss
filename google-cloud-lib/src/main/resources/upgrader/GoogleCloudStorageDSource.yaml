@@ -54,3 +54,14 @@ upgrades:
       - setConfig:
           name: gcsOriginConfig.dataParserFormatConfig.csvUnivocityCommentMarker
           value: ${"#"}
+  - toVersion: 4
+    actions:
+      - renameConfig:
+          oldNamePattern: gcsOriginConfig.gcsOriginErrorConfig.errorHandlingOption
+          newNamePattern: gcsOriginConfig.gcsOriginErrorConfig.postProcessing
+      - renameConfig:
+          oldNamePattern: gcsOriginConfig.gcsOriginErrorConfig.errorPrefix
+          newNamePattern: gcsOriginConfig.gcsOriginErrorConfig.postProcessPrefix
+      - renameConfig:
+          oldNamePattern: gcsOriginConfig.gcsOriginErrorConfig.errorBucket
+          newNamePattern: gcsOriginConfig.gcsOriginErrorConfig.postProcessBucket

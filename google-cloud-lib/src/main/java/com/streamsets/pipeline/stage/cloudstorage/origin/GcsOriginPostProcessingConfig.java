@@ -20,20 +20,19 @@ import com.streamsets.pipeline.api.ValueChooserModel;
 import com.streamsets.pipeline.config.PostProcessingOptions;
 import com.streamsets.pipeline.config.PostProcessingOptionsChooserValues;
 
-public class GcsOriginErrorConfig {
+public class GcsOriginPostProcessingConfig {
 
   @ConfigDef(
       required = true,
       type = ConfigDef.Type.MODEL,
       defaultValue = "NONE",
-      label = "Error Handling Option",
-      description = "Action to take when an error is encountered",
+      label = "Post processing blob handling Option",
+      description = "Action to take after blob is processed",
       displayPosition = 200,
-      displayMode = ConfigDef.DisplayMode.BASIC,
       group = "#0"
   )
   @ValueChooserModel(PostProcessingOptionsChooserValues.class)
-  public PostProcessingOptions errorHandlingOption;
+  public PostProcessingOptions postProcessing;
 
   @ConfigDef(
       required = true,
@@ -41,9 +40,8 @@ public class GcsOriginErrorConfig {
       defaultValue = "MOVE_TO_PREFIX",
       label = "Archiving Option",
       displayPosition = 201,
-      displayMode = ConfigDef.DisplayMode.BASIC,
       group = "#0",
-      dependsOn = "errorHandlingOption",
+      dependsOn = "postProcessing",
       triggeredByValue = { "ARCHIVE" }
   )
   @ValueChooserModel(GcsArchivingOptionChooserValues.class)
@@ -52,26 +50,26 @@ public class GcsOriginErrorConfig {
   @ConfigDef(
       required = false,
       type = ConfigDef.Type.STRING,
-      label = "Error Prefix",
-      description = "Objects in error will be moved/copied into this prefix",
+      label = "Prefix",
+      description = "Objects will be moved/copied into this prefix",
       displayPosition = 202,
-      displayMode = ConfigDef.DisplayMode.BASIC,
       group = "#0",
-      dependsOn = "errorHandlingOption",
+      dependsOn = "postProcessing",
       triggeredByValue = { "ARCHIVE" }
   )
-  public String errorPrefix;
+  public String postProcessPrefix;
 
   @ConfigDef(
       required = false,
       type = ConfigDef.Type.STRING,
-      label = "Error Bucket",
-      description = "Objects in error will be moved/copied into this bucket",
+      label = "Target bucket",
+      description = "Objects in will be moved/copied into this bucket",
       displayPosition = 203,
-      displayMode = ConfigDef.DisplayMode.BASIC,
       group = "#0",
       dependsOn = "archivingOption",
       triggeredByValue = { "MOVE_TO_BUCKET", "COPY_TO_BUCKET" }
   )
-  public String errorBucket;
+  public String postProcessBucket;
+
+
 }
